@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,225 +14,133 @@
             height: 100vh;
             margin: 0;
             background-color: #f8f8f8;
-            padding: 20px;
         }
-        input, button, select, label {
-            padding: 8px;
-            margin: 5px;
-            font-size: 14px;
-        }
-        #form-container {
-            max-width: 600px;
-            width: 100%;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        button {
-            cursor: pointer;
+        input, button, select {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
         }
         #output {
             margin-top: 20px;
-            font-size: 16px;
+            font-size: 18px;
             color: #333;
-            text-align: left;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        .form-group label {
-            margin-bottom: 5px;
+            max-width: 80%;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div id="form-container">
-        <h3>AI Image Prompt Generator</h3>
-
-        <!-- Keywords input -->
-        <div class="form-group">
-            <label for="keywords">Enter Keywords (e.g., abstract landscape, urban cityscape):</label>
-            <input type="text" id="keywords" placeholder="Enter keywords...">
-        </div>
-
-        <!-- Style selection -->
-        <div class="form-group">
-            <label for="style">Select Style:</label>
-            <select id="style">
-                <option value="watercolor">Watercolor</option>
-                <option value="oil painting">Oil Painting</option>
-                <option value="ink sketch">Ink Sketch</option>
-                <option value="charcoal drawing">Charcoal Drawing</option>
-                <option value="digital painting">Digital Painting</option>
-                <option value="pastel drawing">Pastel Drawing</option>
-            </select>
-        </div>
-
-        <!-- Aspect ratio options -->
-        <div class="form-group">
-            <label for="aspect_ratio">Choose Aspect Ratio:</label>
-            <select id="aspect_ratio">
-                <option value="1:1">1:1</option>
-                <option value="2:3">2:3</option>
-                <option value="3:2">3:2</option>
-                <option value="4:5">4:5</option>
-                <option value="5:4">5:4</option>
-                <option value="16:9">16:9</option>
-                <option value="9:16">9:16</option>
-                <option value="18:7">18:7</option>
-                <option value="5:1">5:1</option>
-                <option value="7:1">7:1</option>
-                <option value="21:9">21:9</option>
-                <option value="32:9">32:9</option>
-            </select>
-        </div>
-
-        <!-- Randomize aspect ratio -->
-        <div class="form-group">
-            <label><input type="checkbox" id="random_ar" value="1"> Randomize Aspect Ratio</label>
-            <select id="random_ar_type" style="margin-left: 20px;">
-                <option value="all">Randomize All</option>
-                <option value="limited">Randomize 4:5, 5:4, 16:9, 9:16, 18:7</option>
-            </select>
-        </div>
-
-        <!-- Version selection -->
-        <div class="form-group">
-            <label for="version">Choose Version:</label>
-            <select id="version">
-                <option value="--v 6">--v 6</option>
-                <option value="--v 6.1">--v 6.1</option>
-                <option value="--niji 6">--niji 6</option>
-            </select>
-        </div>
-
-        <!-- Additional parameters -->
-        <div class="form-group">
-            <label for="custom_s">Enter --s Value (Style Strength, default is 500):</label>
-            <input type="number" id="custom_s" placeholder="Enter --s value" min="1" max="1000">
-        </div>
-        <div class="form-group">
-            <label for="custom_c">Enter --c Value (Chaos Level, default is 20):</label>
-            <input type="number" id="custom_c" placeholder="Enter --c value" min="1" max="100">
-        </div>
-
-        <!-- Prompt quantity -->
-        <div class="form-group">
-            <label for="quantity">Enter Number of Prompts:</label>
-            <input type="number" id="quantity" placeholder="Enter number of prompts" min="1" max="10">
-        </div>
-
-        <!-- Buttons -->
-        <div class="form-group">
-            <button onclick="generatePrompts()">Generate Prompts</button>
-            <button onclick="savePrompts()">Save Prompts</button>
-            <button onclick="randomizePrompt()">Randomize Prompt</button>
-            <button onclick="clearForm()">Clear</button>
-        </div>
-
-        <div id="output"></div>
-    </div>
+    <h2>AI Image Prompt Generator</h2>
+    <input type="text" id="keywords" placeholder="Enter keywords...">
+    <select id="style">
+        <option value="watercolor">Watercolor</option>
+        <option value="oil painting">Oil Painting</option>
+        <option value="ink sketch">Ink Sketch</option>
+        <option value="charcoal drawing">Charcoal Drawing</option>
+        <option value="digital painting">Digital Painting</option>
+        <option value="pastel drawing">Pastel Drawing</option>
+        <option value="acrylic painting">Acrylic Painting</option>
+        <option value="pencil sketch">Pencil Sketch</option>
+        <option value="collage art">Collage Art</option>
+        <option value="pointillism">Pointillism</option>
+        <!-- เพิ่ม style ใหม่ -->
+        <option value="graffiti">Graffiti</option>
+        <option value="surrealism">Surrealism</option>
+        <option value="cubism">Cubism</option>
+        <option value="abstract expressionism">Abstract Expressionism</option>
+        <option value="pop art">Pop Art</option>
+        <option value="low poly">Low Poly</option>
+        <option value="stained glass">Stained Glass</option>
+        <option value="vaporwave">Vaporwave</option>
+        <option value="retro 80s">Retro 80s</option>
+        <option value="steampunk">Steampunk</option>
+    </select>
+    <input type="number" id="quantity" placeholder="Enter number of prompts" min="1" max="10">
+    <button onclick="generatePrompts()">Generate Prompts</button>
+    <div id="output"></div>
 
     <script>
-        let details = [
-            "intricate patterns and textures", 
-            "dynamic lighting and shadows", 
-            "a surreal composition with unexpected elements", 
-            "a harmonious blend of colors and depth", 
-            "a cinematic perspective with striking contrast", 
-            "an ethereal atmosphere with soft diffusion", 
-            "a bold, expressive brushstroke technique", 
-            "high detail in every aspect of the subject", 
-            "a dreamlike quality with flowing motion", 
-            "a timeless, classic aesthetic"
-        ];
-
-        let keywordsList = [
-            "abstract landscape", 
-            "urban cityscape", 
-            "futuristic architecture", 
-            "cosmic nebula", 
-            "ocean waves", 
-            "autumn forest", 
-            "mountain range", 
-            "fantasy castle", 
-            "wild animals", 
-            "blooming flowers"
-        ];
-
-        let stylesList = [
-            "watercolor", 
-            "oil painting", 
-            "ink sketch", 
-            "charcoal drawing", 
-            "digital painting", 
-            "pastel drawing"
-        ];
-
-        let allAspectRatios = ["1:1", "2:3", "3:2", "4:5", "5:4", "16:9", "9:16", "18:7", "5:1", "7:1", "21:9", "32:9"];
-        let limitedAspectRatios = ["4:5", "5:4", "16:9", "9:16", "18:7"];
-
         function generatePrompts() {
             let keywords = document.getElementById('keywords').value.trim();
             let style = document.getElementById('style').value;
             let quantity = parseInt(document.getElementById('quantity').value);
-            let aspectRatio = document.getElementById('aspect_ratio').value;
-            let randomizeAR = document.getElementById('random_ar').checked;
-            let randomARType = document.getElementById('random_ar_type').value;
-            let version = document.getElementById('version').value;
-            let customS = parseInt(document.getElementById('custom_s').value) || 500;
-            let customC = parseInt(document.getElementById('custom_c').value) || 20;
 
             if (!keywords || isNaN(quantity) || quantity < 1) {
                 document.getElementById('output').innerText = "Please enter valid keywords and quantity.";
                 return;
             }
 
+            let details = [
+                "intricate patterns and textures", 
+                "dynamic lighting and shadows", 
+                "a surreal composition with unexpected elements", 
+                "a harmonious blend of colors and depth", 
+                "a cinematic perspective with striking contrast", 
+                "an ethereal atmosphere with soft diffusion", 
+                "a bold, expressive brushstroke technique", 
+                "high detail in every aspect of the subject", 
+                "a dreamlike quality with flowing motion", 
+                "a timeless, classic aesthetic",
+                // เพิ่มรายละเอียดใหม่อีก 50 แบบ
+                "geometric abstraction with bold lines", 
+                "a soft, atmospheric haze", 
+                "a neon-lit ambiance with glowing edges", 
+                "a retro-futuristic sci-fi aesthetic", 
+                "organic shapes with flowing curves", 
+                "symmetrical composition with precise angles", 
+                "a textured surface with visible strokes", 
+                "a muted, vintage color palette", 
+                "a cold, industrial vibe with metallic tones", 
+                "a bright, pop-inspired color scheme", 
+                "gritty realism with high contrast", 
+                "a hand-drawn illustration style", 
+                "a highly saturated, vibrant look", 
+                "a monochrome palette with dramatic lighting", 
+                "a bold, graffiti-inspired design", 
+                "a delicate, pastel-toned aesthetic", 
+                "sharp, angular lines with high precision", 
+                "a calming, zen-like simplicity", 
+                "a chaotic, energetic burst of colors", 
+                "a photorealistic, high-detail rendering", 
+                "an abstract, experimental concept", 
+                "a glowing, luminescent quality", 
+                "rustic textures with natural imperfections", 
+                "an exaggerated, cartoonish style", 
+                "a smooth, polished finish", 
+                "a grunge, distressed texture", 
+                "a sleek, modern design with minimalism", 
+                "a soft, impressionistic blur", 
+                "a fantasy landscape with mystical elements", 
+                "a futuristic, cyberpunk environment", 
+                "a peaceful, idyllic countryside", 
+                "a dense, urban cityscape", 
+                "a whimsical, childlike quality", 
+                "sharp contrasts with bold highlights", 
+                "a minimalist black-and-white design", 
+                "colorful, chaotic energy with motion blur", 
+                "a serene underwater scene", 
+                "otherworldly, alien landscapes", 
+                "a fragmented, pixelated look", 
+                "an abstract fusion of natural and digital elements", 
+                "a bold, retro color scheme with neon accents", 
+                "a sense of vast emptiness and space", 
+                "a high-energy, dynamic composition", 
+                "a vintage-inspired collage with mixed media", 
+                "a fluid, organic motion with liquid forms", 
+                "a high-contrast chiaroscuro lighting", 
+                "a playful, quirky atmosphere", 
+                "a subtle gradient blend of colors", 
+                "a bold, flat design with vibrant colors", 
+                "a polished, metallic surface with reflections"
+            ];
+
             let output = "";
             for (let i = 0; i < quantity; i++) {
                 let randomDetail = details[Math.floor(Math.random() * details.length)];
-
-                if (randomizeAR) {
-                    if (randomARType === "all") {
-                        aspectRatio = allAspectRatios[Math.floor(Math.random() * allAspectRatios.length)];
-                    } else if (randomARType === "limited") {
-                        aspectRatio = limitedAspectRatios[Math.floor(Math.random() * limitedAspectRatios.length)];
-                    }
-                }
-
-                let prompt = `A ${style} of ${keywords}, featuring ${randomDetail} --ar ${aspectRatio} ${version} --s ${customS} --c ${customC} --style raw`;
+                let prompt = `A ${style} of ${keywords}, featuring ${randomDetail} --c 20 --v 6.1 --style raw`;
                 output += `<p>${prompt}</p>`;
             }
             document.getElementById('output').innerHTML = output;
-        }
-
-        function savePrompts() {
-            let outputText = document.getElementById('output').innerText;
-            let blob = new Blob([outputText], { type: "text/plain" });
-            let link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = "prompts.txt";
-            link.click();
-        }
-
-        function randomizePrompt() {
-            let randomKeyword = keywordsList[Math.floor(Math.random() * keywordsList.length)];
-            document.getElementById('keywords').value = randomKeyword;
-            generatePrompts();
-        }
-
-        function clearForm() {
-            document.getElementById('keywords').value = "";
-            document.getElementById('style').value = "watercolor";
-            document.getElementById('aspect_ratio').value = "1:1";
-            document.getElementById('random_ar').checked = false;
-            document.getElementById('version').value = "--v 6";
-            document.getElementById('custom_s').value = "";
-            document.getElementById('custom_c').value = "";
-            document.getElementById('quantity').value = "";
-            document.getElementById('output').innerHTML = "";
         }
     </script>
 </body>
